@@ -1,0 +1,462 @@
+\documentclass[12pt, openany]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage{}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\setcounter{secnumdepth}{0}
+%________________________________________________________________________
+
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+
+    % Upper part of the page. The '~' is needed because \\
+    % only works if a paragraph has started.
+    \includegraphics[scale=0.5]{inpt.jpg}\\[0.1cm] 
+    \textsc{\LARGE Institut National des Postes et Télécommunication}\\[2cm]
+    \textsc{\Large Rapport du projet JavaEE}\\[1cm]
+    % Title
+    \HRule \\[0.4cm]
+    { \huge \bfseries Gestion d'une agence de location de voiture\\[0.4cm] }
+    \HRule \\[2cm]
+    
+    % Author and supervisor
+       \large
+       \emph  { Réalisé par:}
+       \textsc\\
+       {\LARGE 
+        TAMIR taha\\
+        SLIMANE Mouad\\
+        OUSSIDI Adil\\
+        ALALOU Ayoub}\\[1cm]
+        
+       \large
+        \emph{Encadré par :}\\
+    
+        \textsc\\
+        {\LARGE M.EL HAMLAOUI Mahmoud}\\[1cm]
+ 
+    \vfill
+
+    % Bottom of the page
+    \emph{ Filière:} \textsc DATA ENGINEER\\
+    {\large{} Année universitaire : 2020-2021}\\
+  \end{center}
+
+%_____________________________________________________________________________
+ 
+  
+  \chapter*{Remerciements}
+  \label{chap:Remer}
+\addcontentsline{toc}{chapter}{\nameref{chap:Remer}}
+
+      \paragraph{}
+      \rm
+          Tout d’abord, nous tenons à remercier toutes celles et tous ceux qui nous ont
+aidé à réaliser ce travail.
+
+      \paragraph{}
+       Nous voudrions présenter nos remerciements à notre encadreur « M.EL HAMLAOUI Mahmoud».
+Nous voudrions également lui témoigner notre gratitude pour sa patience et son soutien qui nous a été précieux afin de mener notre travail à bon port.
+Merci
+      \paragraph{}
+      Enfin, nos remerciements s’adressent aux professeurs et au corps administratif
+de l’INPT. Et nous espérons que le présent écrit présentera notre travail décemment
+et que notre étude sera à la hauteur des espérances.
+    
+%____________________________________________________________________________________________
+    
+    
+  \chapter*{Résumé}
+  \label{chap:res}
+\addcontentsline{toc}{chapter}{\nameref{chap:res}}
+
+      \paragraph{}
+     Dans le cadre de notre projet JavaEE, que nous allons détailler par la suite est destiné pour la gestion de location de voitures. On rentre dans le cadre de la  réalisation d’une Application web qui assure le bon fonctionnement d’une société de location de voiture.
+     
+      \paragraph{}
+      Il vise à assurer toutes les gestions de la société : gestion des réservations, gestion de location, gestion des voitures et la gestion des clients sans oublier le coté statistiques sur l’ensemble des locations effectuées afin d’assurer la bonne décision.
+
+\paragraph{}
+Ce présent
+rapport, résumera le déroulement de toutes les étapes du projet de la conception
+jusqu’à la réalisation.
+
+%________________________________________________________________________________________________
+
+\chapter*{Abstract}
+\label{chap:abs}
+\addcontentsline{toc}{chapter}{\nameref{chap:abs}}
+      \paragraph{}
+     As part of our JavaEE project, which we will detail below is intended for car rental management. This is part of the creation of a Web Application that ensures the proper functioning of a car rental company.
+     
+      \paragraph{}
+      It aims to ensure all the management of the company: management of reservations, rental management, car management and customer management without forgetting the statistical side of all rentals made in order to ensure the right decision.
+
+\paragraph{}
+This report will summarize the progress of all stages of the project from concept to completion.
+
+%___________________________________________________________________________________________   
+    \tableofcontents
+    \renewcommand{\theenumi}{\roman{enumi}}
+  
+    \listoffigures
+%___________________________________________________________________________________________
+
+
+\chapter*{Introduction}
+
+\label{chap:intro}
+\addcontentsline{toc}{chapter}{\nameref{chap:intro}}
+\paragraph{}
+\parindent=1cm
+Dans le cadre de notre formation(Cours+TP) en JavaEE à l’INPT, ce projet
+nous a été proposé dans le but de la réalisation d’une application web qui permet
+gérer les voitures (ajout, suppression, modification) et ses prix de location, gérer les locations, ainsi la gestion des Réservation (suppression, validation, confirmation).
+\paragraph{}
+ Le présent rapport trace les différentes phases qui ont conduit à l’aboutissement
+de ce projet, et qu’on peut axer sur deux différents chapitres cohérents et
+complémentaires.\\
+\parindent=1cm
+ Le premier concerne la conception du projet. Tandis que le deuxième chapitre
+est consacré à la réalisation du projet.
+
+%__________________________________________________________________________________________________________________________________
+
+\chapter{Analyse et Conception}
+
+  \section{Analyse}
+
+      \paragraph{}
+Le présent projet tend à mettre en place le service ‘Gestion de location de voiture. suivant l’ exemple que notre professeur encadrant a proposé.
+
+
+  \section{Conception}
+  
+  
+  \subsection{A. Présentation de la méthode d'analyse}
+      \paragraph{}
+      Le Langage de Modélisation Unifié, de l’anglais Unified Modeling Language
+(UML), est un langage (semi-formel) graphique pour visualiser, spécifier, construire et documenter un système logiciel. Il fusionne des notations provenant de plusieurs méthodes de développement orienté objet.
+
+\subsection{B. Diagramme de cas d'utilisation}
+ L’objectif fondamental de cette étape est d’identifier les principaux cas d’utilisation.
+Dans notre application, nous avons défini deux acteurs:\\
+\begin{itemize}
+   \item \textbf{Utilisateur:}\\
+  \begin{itemize}
+    \item[*] Prolonger la durée de location;
+    \item[*] Louer une voiture;
+    \item[*] Chercher une voiture.\\
+  \end{itemize}
+    \item \textbf{Chef du projet:}\\
+    \begin{itemize}
+    \item[*] Se connecter au site Web;
+    \item[*] Chercher une voiture;
+    \item[*] Gérer la location des voitures;
+    \item[*] Voir la liste des réservations;
+    \item[*] Annuler une réservation.\\
+  \end{itemize}
+\end{itemize}
+\vskip 1cm
+
+Ceci est modélisé par le diagramme de cas d’utilisation suivant :\\
+
+
+\begin{figure}[h]
+  \centering
+\includegraphics[scale=0.7]{Use case.PNG}\\[0.1cm] 
+  \caption{Diagramme de cas d'utilisation}
+  \end{figure}
+
+
+\subsection{C. Diagramme de séquence}
+Le diagramme de séquence est une représentation intuitive qu’on a utilisée pour concrétiser des interactions entre nos entités.\\
+Le diagramme de séquence décrit un scénario qui modélise une exécution particulière d’un cas d’utilisation du début jusqu’à la fin. Il correspond à une sélection d’enchaînements du cas d’utilisation.\\ 
+\vskip 8cm
+
+
+
+  \subsubsection{a) Ajouter une voiture :}
+ 
+       \begin{figure}[h]
+          \centering
+          \includegraphics[scale=0.5]{Ajouter voiture.PNG}
+          \caption{Diagramme de séquence pour ajouter une voiture}
+       \end{figure}
+
+%\newpage
+
+ \subsubsection{b) Louer une voiture :}
+
+ 
+\begin{figure}[h]
+  \centering
+\includegraphics[scale=0.6]{Louer Voiture.PNG} 
+\caption{Diagramme de séquence pour ajouter une voiture}
+\end{figure}
+\vskip 4cm
+
+
+\subsection{D. Diagramme d'états}
+\begin{figure}[h]
+  \centering
+\includegraphics[scale=0.8]{Diagram d'etats.PNG}
+\caption{Diagramme d'états}
+\end{figure}
+%_____________________________________________________________________________________________________
+
+
+
+ \chapter{Réalisation}
+ \paragraph{}
+ Après avoir élaboré la conception de notre application, nous abordons tout
+d’abord une étude technique où nous décrivons les ressources logicielles utilisées
+dans le développement de notre projet.
+Nous présentons en premier lieu notre choix de l’environnement de travail,
+où nous spécifions l’environnement matériel et logiciel qu’on a utilisé pour réaliser
+notre application puis nous détaillons l’architecture, aussi nous présentons
+quelques interfaces réalisées pour illustrer le fonctionnement de quelques activités
+du système.
+
+ 
+   \section{A. Environnement du travail}
+
+
+  \begin{itemize}
+\item [a) ] \textbf{Langage de programmation:}\\
+\begin{figure}[h]
+ \centering
+\includegraphics[scale=0.8]{Java-header-300x169.jpg} 
+\caption{Logo Java}
+\end{figure}
+
+
+\paragraph{}
+  Java est le nom de marque d’une technique informatique développée initialement
+par Sun Microsystems puis par Oracle : la «technologie JavaTM ». Java
+est utilisé dans une grande variété de plates-formes depuis les systèmes embarqués
+et les téléphones mobiles, les ordinateurs individuels, les serveurs, les
+applications d’entreprise, les superordinateurs, etc. Défini à l’origine comme
+un langage, « Java » a évolué au cours du temps pour devenir un ensemble
+cohérent d’éléments techniques et non techniques. Ainsi, la technologie Java
+regroupe : Des standards (la plate-forme Java) définis sous forme de spécification
+par le Java Community Process (JCP), en trois éditions : Java SE
+(standard edition),\\
+\begin{figure}[h]
+ \centering
+\includegraphics[scale=0.3]{java-ee-logo.png} 
+\caption{Logo JavaEE}
+\end{figure}
+
+\paragraph{}
+Java EE (enterprise edition) s’appuyant sur Java SE, est une plateforme
+normalisée, destinée au développement de logiciels pour les entreprises et les
+serveurs d’application. La plateforme comporte toutes les interfaces de programmation
+de Java SE, ainsi que des interfaces de programmation destinées
+à créer des applications Web, envoyer des courriels, mettre en oeuvre et utiliser
+des services Web, mettre en oeuvre de la persistance et des transactions.\\
+%\vskip 1cm
+
+\item [b)]\textbf{Outils de développement:}\\
+\begin{figure}[h]
+ \centering
+\includegraphics[scale=0.2]{Eclipse-Logo.png}
+\caption{Logo Eclipse}
+\end{figure}
+
+\paragraph{}
+Eclipse est l'environnement de développement (spécialisé pour le langage Java) qui sera utilisé dans ce projet. Le choix d'Eclipse repose essentiellement sur sa gratuité, sa facilité d'utilisation, sa puissance de développement et surtout ses nombreux plugins (bibliothèques additives).\\
+\begin{figure}[h]
+ \centering
+\includegraphics[scale=2.5]{Apache_Tomcat_Logo.png}  
+\caption{Logo Apache Tomcat}
+\end{figure}
+
+\paragraph{}
+L'utilisation d'un serveur Java EE est obligatoire pour le développement de pages Web dynamiques en Java EE. Un serveur HTTP classique reçoit des requêtes HTTP et renvoie des réponses mais il ne connait pas les Servlets, les JSP... Il est donc essentiel d'utiliser un programme appelé moteur de Servlets qui est contenu dans le serveur Java EE et qui permet de pallier ce manque.\\
+
+\item [c)] \textbf{La méthode MVC :}\\
+\begin{figure}[h]
+ \centering
+\includegraphics[scale=1.2]{ModeleMVC.png}
+\caption{Modèle-Vue-Contrôleur}
+\end{figure}
+\paragraph{}
+Un des plus célèbres design patterns s’appelle MVC, qui signifie Modèle -
+Vue-Contrôleur. C’est celui que nous allons découvrir dans cette section du
+chapitre. Le pattern MVC permet de bien organiser son code source. Il aide
+à savoir quels fichiers créer, mais surtout à définir leur rôle. Son but est de
+séparer la logique du code en trois parties que l’on retrouve dans des fichiers
+distincts, comme l’explique la description qui suit :
+\paragraph{}
+\textbf {Le modèle} représente la partie de l’application qui exécute la logique métier.
+Cela signifie qu’elle est responsable de récupérer les données, de les convertir
+selon des concepts chargés de sens pour votre plateforme, tels que le traitement,
+la validation, l’association et beaucoup d’autres tâches concernant la
+manipulation des données.
+\paragraph{}
+\textbf {La vue} se concentre sur l’affichage. Elle ne fait presque aucun calcul et se
+contente de récupérer des variables pour savoir ce qu’elle doit afficher. On y
+trouve essentiellement du code HTML mais aussi quelques boucles et conditions
+PHP très simples.
+\paragraph{}
+\textbf {Le contrôleur} gère les requêtes des utilisateurs. Elle est responsable de
+retourner une réponse avec l’aide mutuelle des couches Model et Vue. Les
+Contrôleurs peuvent être imaginés comme des managers qui ont pour mission
+que toutes les ressources souhaitées pour accomplir une tâche soient
+déléguées aux travailleurs corrects. Il attend des requêtes des clients, vérifie
+leur validité selon l’authentification et les règles d’autorisation, délèguent les
+données récupérées et traitées par le Model, et sélectionne les type de présentation
+correctes que le client accepte, pour finalement déléguer le processus
+d’affichage à la couche Vue.\\
+\vskip 4cm
+
+\item [d)] \textbf{Gestion de la Base de données}
+\begin{figure}[h]
+ \centering
+\includegraphics[scale=0.5]{OIP.jpg}
+\caption{Logo MySQL}
+\end{figure}
+
+\paragraph{}
+Le SGBD MySQL est supporté par un large éventail d'outils. MySQL est surtout installé pour les applications Web, ce SGBD est solide et utilisé par de grands groupes spécialisés dans l'Internet. Plusieurs pilotes natifs de type 4 sont disponibles pour MySQL et sont conseillés pour une utilisation en Java.
+
+\end{itemize}
+
+
+%____________________________________________
+ \section{B. Les interfaces graphiques}
+
+
+ \paragraph{}
+Nous présentons dans cette section quelques interfaces principales de notre
+réalisation qui illustrent les différents cas d’utilisation.
+
+
+ \subsubsection{a) Espace chef du projet:}\\
+ \vskip 0.5cm
+   \begin{itemize}
+   
+      \item Acceuil:
+    
+      \textit{* Page d’authentification}\\Après la saisie du login et du password correcte une vérification se fait au
+niveau de la table de chef du projet qui mènera vers sa page d’accueil.      \begin{figure}[h]
+        \centering
+           \includegraphics[scale=0.4]{WhatsApp Image 2021-01-01 at 21.01.17.jpeg}
+           \caption{Authentificationd d'admin}
+       \end{figure}
+\vskip 2cm
+       \paragraph{}
+        \textit{* Page d’acceuil}\\
+        Le chef de projet peut consulter la liste des réservations, ajouter/ supprimer/ editer une voiture:\\
+        
+     
+       \begin{figure}[h]
+        \centering
+           \includegraphics[scale=0.4]{5.RecherchrChef .jpeg}
+           \caption{L'acceuil d'administrateur}
+       \end{figure}
+    \vskip 0.5cm
+
+     \item L'ajout d'une voiture:
+     \paragraph{}
+     L'ajout d'une voitutre se fait à partir de la définition de toutes les caractéristiques montrées si-dessous: 
+         \begin{figure}[h]
+          \centering
+          \includegraphics[scale=0.3]{6.L'ajout d'une voiture.jpeg}
+          \caption{L'ajout d'une voiture}
+         \end{figure}
+         
+ \newpage       
+    \item Liste des réservations:
+     \paragraph{}
+    L'admin peut consulter la liste des réservations et les informations liées au clients:
+        \begin{figure}[h]
+          \centering
+          \includegraphics[scale=0.3]{7.ListeRéservation.jpeg}
+          \caption{La liste des réservations}
+        \end{figure}
+      \end{itemize}
+        
+ 
+ 
+ \subsubsection{b) Espace utilisateur:}\\
+ \vskip 0.5cm
+ \begin{itemize}
+
+ \item Acceuil Client:
+\paragraph{}
+ Le client peut chercher une voiture, afficher la liste de toutes les voitures et réserver une voiture mais il 'a pas le droit de se connecter.\\
+       \begin{figure}[h]
+        \centering
+           \includegraphics[scale=0.4]{2.recherche client.jpeg}
+           \caption{L'acceuil d'utilisateur}
+       \end{figure}
+ \newpage
+ 
+  \item La formulaire de la réservation:
+  \paragraph{}
+  Lorsque le client a choisi la voiture à réserver, il sera etre obligé de remplir la formulaire de réservation:\\
+       \begin{figure}[h]
+        \centering
+           \includegraphics[scale=0.4]{3.Réservation de client.jpeg}
+           \caption{Formulaire de la réservation}
+       \end{figure}
+       
+       
+\end{itemize}
+%______________________________________________________________________
+\chapter*{Conclusion}
+\paragraph{}
+Pour conclure, ce projet a été une opportunité pour nous initier à JavaEE.
+Nous vous avons présenté tout au long de ce rapport la démarche que nous
+avons suivie pour mettre au point cette plateforme. Toutefois pour améliorer
+notre site web on peut utiliser Q-learning pour pouvoir s’en passer
+du chef du projet et de proposer automatiquement des recommandations
+par apprentissage.
+%____________________________________________________
+
+\chapter*{Bibliographie}
+
+\begin{itemize}
+    \item [*][1] https ://openclassrooms.com/\\
+    \item [*][2] https ://developpers.com/\\
+    \item [*][3] https ://stackoverflow.com/\\
+    \item [*][4] https ://github.com/\\
+\end{itemize}
+
+    
+
+
+  
+  
+  
+  
+
+   
+
+
+
+    
+  
+  \end{sffamily}
+\end{titlepage}
+\end{document}
+
+
+
+
